@@ -1,0 +1,16 @@
+Options +FollowSymlinks
+ErrorDocument 404 /404.php
+RewriteEngine  on
+RewriteCond %{http_host} ^nhadatonline.vn [NC]
+
+RewriteRule ^admin$ ./admin/index.php
+RewriteRule ^admin/$ ./admin/index.php
+
+RewriteRule ^contact-us$ ./contact-us.php
+RewriteRule ^([^/\.]+)-([0-9]+)\.html$ ./posts.php?id=$2 [L]
+RewriteRule ^buy/$ ./listing.php?categoryID=1 [L]
+RewriteRule ^rent/$ ./listing.php?categoryID=2 [L]
+RewriteRule ^property/([^/\.]+)-([0-9]+)\.html$ ./details.php?id=$2 [L]
+
+
+

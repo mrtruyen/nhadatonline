@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+#printErrordiv{
+	height:20px;
+	}
+#printErrordiv span{
+	color:#F00;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+}
+.warnings{
+	background:#fff2d7;
+	border:1px #f7ae12 solid;
+	border-radius:4px;
+	position:relative;
+	padding:10px;
+	color:#ff4800;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;}
+.warnings h5{	
+text-align:left;
+color:#ff4800;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:18px;
+margin-bottom:5px;
+}	
+.warnings ol{
+margin-left:15px;
+}
+.warnings ol li{
+color:#ff4800;
+font-size:12px;
+text-align:left;
+}
+.warnings p{
+color:#FF0000;
+text-align:left;
+padding-bottom:3px;
+}
+.success{
+background:#f5fff1;
+border:#5d954a 1px solid;
+border-radius:4px;
+padding:10px;
+text-align:left;
+margin-bottom:5px;
+}
+.success p{
+color:#376a25;
+font-weight:bold;
+}
+
+.flag_lan{
+	position:absolute;
+	right:140px;
+	top:10px;
+}
+.content_img{
+	max-width:350px;
+	float:left;
+	margin:0px 10px 10px 0px;
+}
+.content_img{
+	border:#CCC 1px solid;
+	padding:1px;
+}
+#printmsg{
+	height:20px;
+	padding-bottom:5px;
+}
+#printmsg span{
+	color:#F00;
+}
+#printmsg font{
+	color:#53b50a;
+}
+.sendbutton {
+    background: none repeat scroll 0 0 #ee552a;
+    border: 0 none;
+    border-radius: 3px;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+	cursor: pointer;
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    outline: 0 none;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out 0s;
+    vertical-align: middle;
+}
+/*****************WISH_LISTS************************/
+a.wish_del{
+	background:url(../images/white_close.png) #F90 no-repeat center;
+	width:20px;
+	height:20px;
+	border-radius:2px;
+	display:block;
+	position:absolute;
+	top:5px;
+	right:5px;}
+	
+a.wish_del:hover{
+	background:url(../images/white_close.png) #F60 no-repeat center;}
+	
+	
+
+	
+.logo_slider_dv{
+	border:2px #3a5e07 solid;
+	padding:20px 25px;
+	margin:20px 0;}
+	
+.logo_slider_dv h2{
+	font-size:30px;
+	line-height:30px;
+	font-weight:bold;
+	color:#4a7f00;
+	font-family:Arial, Helvetica, sans-serif;
+	padding-bottom:15px;
+	text-align:center;}
+	

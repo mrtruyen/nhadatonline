@@ -1,0 +1,216 @@
+/* CSS Document */
+/*******************************BACKGROUND*************************************/
+body{
+background:#21252a;
+background-position:center top;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#000000;
+margin:0px;
+}
+.spacer{
+font-size:0px;
+line-height:0px;
+clear:both;}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td {
+margin: 0;
+padding: 0;}
+#container{
+width:1005px; 
+margin:auto;
+}
+.index_font{
+font-family:"Times New Roman", Times, serif;
+font-size:20px;
+font-weight:normal;
+color:#FFFFFF;
+text-align:center;
+}
+a.site_link{
+font-family:"Times New Roman", Times, serif;
+font-size:13px;
+color:#bbbbbb;
+text-decoration:none;
+}
+a.site_link:hover{
+font-family:"Times New Roman", Times, serif;
+font-size:13px;
+color:#FFFFFF;
+text-decoration:none;
+}
+.profile_header{
+width:175px;
+background:url(../images/profile_header.jpg) bottom no-repeat;
+height:5px;
+margin:0;
+}
+.profile_middle{
+width:175px;
+background:url(../images/profile_bg.jpg) repeat-y;
+padding:5px 0px;
+margin:0;
+}
+.profile_bottom{
+width:175px;
+background:url(../images/profile_bottom.jpg ) no-repeat;
+height:5px;
+}
+h1{
+font-family:Arial, Helvetica, sans-serif;
+font-size:15px;
+font-weight:normal;
+color:#000000;
+font-weight:bold;
+text-align:center;
+}
+h4{
+font-size:12px;
+color:#FFFFFF;
+font-weight:bold;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+.box_header{
+width:801px;
+background:url(../images/box_header.jpg) bottom no-repeat;
+height:7px;
+}
+.box_middle{
+width:801px;
+background:url(../images/box_midlle.jpg) repeat-y;
+padding:5px 0px;
+}
+.box_bottom{
+width:801px;
+background:url(../images/box_bottom.jpg) no-repeat;
+height:7px;
+}
+p{
+font-family:Georgia, "Times New Roman", Times, serif;
+font-size:12px;
+line-height:18px;
+}
+.small_box_header{
+width:355px;
+background:url(../images/small_box_header.jpg) bottom no-repeat;
+height:27px;
+padding:10px 0px 0px 20px;
+}
+.small_box_middle{
+width:375px;
+background:url(../images/small_box_middle.jpg) repeat-y;
+padding:5px 0px;
+}
+.small_box_bottom{
+width:375px;
+background:url(../images/small_box_bottom.jpg) no-repeat;
+height:4px;
+}
+.white_font{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#FFFFFF;
+font-size:13px;
+font-weight:bold;
+}
+.urbangreymenu{
+width: 190px; /*width of menu*/
+}
+.urbangreymenu .headerbar{
+font: bold 12px Verdana;
+color:#000000;
+background:url(../images/menu_nab.jpg)  repeat-x ; /*last 2 values are the x and y coordinates of bullet image*/
+margin-bottom: 0; /*bottom spacing between header and rest of content*/
+text-transform: uppercase;
+padding: 10px 0 3px 17px; /*31px is left indentation of header text*/
+height:21px;
+}
+h3{
+margin: 1px;
+border-bottom:#FFFFFF;
+}
+.urbangreymenu .headerbar a{
+text-decoration: none;
+color:#000000;
+display: block;
+}
+.urbangreymenu ul{
+list-style-type: none;
+margin: 0;
+padding: 0;
+margin-bottom: 0; /*bottom spacing between each UL and rest of content*/
+}
+.urbangreymenu ul li{
+padding-bottom: 2px; /*bottom spacing between menu items*/
+}
+.urbangreymenu ul li a{
+font: normal 12px Arial;
+color:#ffffff;
+background:url(../images/nab_sub.jpg) repeat-x;
+display: block;
+padding: 7px 0;
+line-height: 17px;
+padding-left: 8px; /*link text is indented 8px*/
+text-decoration: none;
+}
+.urbangreymenu ul li a:visited{
+color: black;
+}
+.urbangreymenu ul li a:hover{ /*hover state CSS*/
+color: white;
+background: black;
+}
+.login_box_middle{
+width:347px;
+background:url(../images/login_middle.jpg) repeat-y;
+padding:5px 0px;
+}
+.login_box_bottom{
+width:347px;
+background:url(../images/login_bottom.jpg) no-repeat;
+height:30px;
+padding:12px 0px 0px 0px;
+}
+.title_text{
+font-family:"Times New Roman", Times, serif;
+font-size:14px;
+font-weight:bold;
+}
+.username_bg{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+padding:3px 8px;
+background:url(../images/username_box_bg.jpg) no-repeat;
+width:178px;
+border:0;
+height:19px;
+}
+.submit{
+background:url(../images/login_botton_bg.jpg) no-repeat;
+background-position:top;
+height:30px;
+width:68px;
+margin:0;
+padding:0px 0px 0px 15px;
+color:#FFFFFF;
+border:0;
+font-size:14px;
+font-family:"Times New Roman", Times, serif;
+font-weight:normal;
+cursor:pointer;
+}
+.white_small_text{
+font-family:"Times New Roman", Times, serif;
+font-weight:normal;
+font-size:13px;
+color:#FFFFFF;
+}
+.login_div{
+padding-right:20px;
+}
+.deleteall_margin{
+margin-right:0px;
+width:765px;
+float:left;
+}
+.manubox_padding{
+padding-top:-20px;
+}

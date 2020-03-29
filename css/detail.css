@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+
+.rg-image img{
+	width: 600px;
+	height: 400px;
+}
+
+#articleLft{
+	float: left;
+}
