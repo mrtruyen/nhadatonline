@@ -226,7 +226,7 @@
         <td align="center" colspan="2">
           <input type="hidden" name="id" value="<?= $id ?>" />
           <input type="submit" name="submit" value="<?php echo ($id == '') ? 'Add' : 'Update' ?>" class="button" />
-          <input type="button" name="back" value="Back" class="back_botton" onClick="Javascript:history.back()" /> </td>
+           </td>
       </tr>
     </table>
   </form>
