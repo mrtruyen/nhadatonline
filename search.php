@@ -158,7 +158,6 @@ $dirrent = round($dirrent, -3);
 
 	}
 
-
 	function isNumberKey(evt) {
 		var charCode = (evt.which) ? evt.which : event.keyCode;
 		////onkeypress="return isNumberKey(event)" 
@@ -169,8 +168,5 @@ $dirrent = round($dirrent, -3);
 		}
 	}
 </script>
-
-
 </body>
-
 </html>

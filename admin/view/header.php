@@ -79,8 +79,3 @@ foreach($_SESSION['languages'] as $d_alllanguage)
 ?>
 
 </div>
-<?php
-// $sql_alllanguage="select * from ".$prev."language where id='".$_SESSION['languageID']."'";
-// $re_alllanguage=mysqli_query($conn,$sql_alllanguage);
-// $d_alllanguage=mysqli_fetch_array($re_alllanguage);
-?>

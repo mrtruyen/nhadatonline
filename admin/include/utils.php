@@ -1,28 +1,28 @@
 <?php
 function get_title($tableName,$filedName,$value,$viewField){
-	global $prev, $conn;
+	global  $conn;
 	!$viewField?$viewField='title':'';
 	!$filedName?$filedName='id':'';	
-	$sql_table="select ".$viewField." from ".$prev.$tableName." where ".$filedName."='".$value."' ";
+	$sql_table="select ".$viewField." from ".$tableName." where ".$filedName."='".$value."' ";
 	$re_table=@mysqli_query($conn,$sql_table);
 	$d_table=@mysqli_fetch_assoc($re_table);
 	
 	return $d_table[$viewField];
 }
 function get_title_con($tableName,$filedName,$value,$viewField,$cond){
-	global $prev, $conn;
+	global  $conn;
 	!$viewField?$viewField='title':'';
 	!$filedName?$filedName='id':'';	
 	
 	
-	$sql_table="select ".$viewField." from ".$prev.$tableName." where ".$filedName."='".$value."' ".$cond;
+	$sql_table="select ".$viewField." from ".$tableName." where ".$filedName."='".$value."' ".$cond;
 	$re_table=@mysqli_query($conn,$sql_table);
 	$d_table=@mysqli_fetch_array($re_table);
 	
 	return $d_table[$viewField];
 }
 function get_option_list($tableName,$valueField='id',$selectedValue='0',$viewField='title',$orderBy='id',$conditon=''){
-	global $prev,$conn;	
+	global $conn;	
 	// !$valueField?$valueField='id':''; //By Default value id
 	// !$viewField?$viewField='title':'';//By Default Show Title
 	
@@ -30,7 +30,7 @@ function get_option_list($tableName,$valueField='id',$selectedValue='0',$viewFie
 	$cond=" WHERE ".$conditon." "; 
 	$cond.=$orderBy=='' || !$orderBy ? " order by ".$viewField : " order by ".$orderBy; //Checking for order by condition, if it's empty by Default Order by viewField
 	
-	$sql_table="select * from ".$prev.$tableName.$cond; //Query for select box 
+	$sql_table="select * from ".$tableName.$cond; //Query for select box 
 	// var_dump($sql_table); die();
 	$re_table=@mysqli_query($conn,$sql_table);
 	$option='<option value="0">--Select--</option>'; //Default First select box option
@@ -71,8 +71,8 @@ function get_new_id($tabel_name,$column_name='id',$objectID_column='typeID'){
 
 function get_max_order($tableName)
 {
-    global $prev, $conn;
-    $sql = "select max(weight) as weight from " . $prev . $tableName . " ";
+    global  $conn;
+    $sql = "select max(weight) as weight from " . $tableName . " ";
     $re = @mysqli_query($conn, $sql);
     $d = @mysqli_fetch_array($re);
     return ($d['weight'] + 1);
@@ -80,8 +80,8 @@ function get_max_order($tableName)
 
 function get_max_order_lan($tableName)
 {
-    global $prev, $conn;
-    $sql = "select max(weight) as weight from " . $prev . $tableName . " where languageID='" . $_SESSION['languageID'] . "'";
+    global  $conn;
+    $sql = "select max(weight) as weight from " . $tableName . " where languageID='" . $_SESSION['languageID'] . "'";
     $re = @mysqli_query($conn, $sql);
     $d = @mysqli_fetch_array($re);
     return ($d['weight'] + 1);

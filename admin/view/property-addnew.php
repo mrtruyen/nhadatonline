@@ -70,7 +70,7 @@
         <th width="251" valign="top"> Property Type:</th>
         <td width="752" align="left">
           <select class="select_box" style="width:260px" name="propertyTypeID">
-            <?php $cond = "languageID=" . $_SESSION['languageID'] ?>
+            <?php $cond = "status='y' AND languageID=" . $_SESSION['languageID'] ?>
             <?= get_option_list('property_type', 'propertyTypeID', (@$_SESSION['d_property']['propertyTypeID'] ? $_SESSION['d_property']['propertyTypeID'] : 0), 'title', 'id', $cond) ?>
 
           </select>

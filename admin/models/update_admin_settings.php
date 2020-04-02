@@ -27,14 +27,14 @@ if (defined('ADMIN_SETTING')) {
 	}
 	if(empty($_SESSION['INSERT_ERROR'])) {
 		$adminID = $_SESSION['adminAccount']['id'];
-		
+
 		if (!empty($_POST['adminnewPassword'])) {
-			$update = "update " . $prev . "adminuser set password='".md5($adminnewPassword)."' where id=$adminID";
+			$update = "update adminuser set password='".md5($adminnewPassword)."' where id=$adminID";
 			mysqli_query($conn, $update);
 			$_SESSION['PASSWORD_CHANGE'] = 1;
 		}
 		
-		$update = "update " . $prev . "adminuser set username='$userName',adminName='$adminName',adminEmailAddress='$adminEmailAddress' 
+		$update = "update adminuser set username='$userName',adminName='$adminName',adminEmailAddress='$adminEmailAddress' 
 	where id=$adminID";
 		mysqli_query($conn, $update);
 		$_SESSION['UPDATE_SUCCESS'] = 1;

@@ -29,7 +29,7 @@ if(defined('PROPERTY_TYPE_ADDNEW'))
 			}
 			
 			/*insert content for individual language*/
-			$sql_alllanguage="select * from ".$prev."alllanguage order by weight";
+			$sql_alllanguage="select * from language order by weight";
 			$re_alllanguage=mysqli_query($conn,$sql_alllanguage);
 			foreach($_POST['title'] as $langID => $title)
 			{

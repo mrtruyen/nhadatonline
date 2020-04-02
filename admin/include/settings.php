@@ -2,8 +2,7 @@
 require('functions.php');
 require('utils.php');
 
-$vpath="";
-$prev="";
+// $prev="";
 $dotcom="Demo";
 $website_name="";
 $basepath="http://nhadatonline.vn/admin/";

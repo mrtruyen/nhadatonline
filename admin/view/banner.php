@@ -20,7 +20,7 @@
 </thead>
 <tbody>  
 <?php
-$r=mysqli_query($conn,"select 1 from ".$prev."banner");
+$r=mysqli_query($conn,"select 1 from banner");
 $total=mysqli_num_rows($r);
 $perpage =10;
 if($total)
