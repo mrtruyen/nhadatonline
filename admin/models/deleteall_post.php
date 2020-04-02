@@ -1,5 +1,5 @@
 <?php
-// var_dump($_REQUEST); die();
+global $conn;
 			$sql_select="select * from post order by id desc";
 			$re_select=mysqli_query($conn,$sql_select);
 			$i=0;

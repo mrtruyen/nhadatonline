@@ -25,7 +25,7 @@
                 $dirrent = round($dirrent, -3);
                 for ($i = $minPrice; $i <= $maxPrice; $i = $i + $dirrent) {
                 ?>
-                    <option value="<?= $i ?>" <?php if ($i == $minPrice) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
+                    <option value="<?= $i ?>" <?php if ($i == $minPrice || @$_REQUEST['minP'] == $i) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
                 <?php
                 }
                 ?>
@@ -43,7 +43,7 @@
                 // $dirrent = round($dirrent, -3);
                 for ($i = $minPrice; $i <= $maxPrice; $i = $i + $dirrent) {
                 ?>
-                    <option value="<?= $i ?>" <?php if ($i == $maxPrice) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
+                    <option value="<?= $i ?>" <?php if ($i == $maxPrice || @$_REQUEST['maxP'] == $i) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
                 <?php
                 }
                 ?>

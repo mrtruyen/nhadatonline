@@ -1,5 +1,6 @@
 
 <?php
+global $conn;
 $sql_select = "select * from banner  order by id desc";
 
 $re_select = mysqli_query($conn, $sql_select);

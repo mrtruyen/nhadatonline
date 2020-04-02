@@ -1,14 +1,26 @@
 <?php
-require("include/functions.php");
-// simple true or false test
+require_once("include/functions.php");
+require_once('database.php');
+$vpath="";
+$prev="";
+$dotcom="Demo";
+$website_name="";
+$basepath="http://nhadatonline.vn/";
+$imagepath = $basepath."images/";
+$bannerImagepath="http://nhadatonline.vn/bannerupload/";
+$err="Could Not Connect To The Database";
+$_SESSION['default_language'] = 'vi';
+
+// setting language
+$db = $db ? $db : Database::getInstance();
 $allLanguage = [];
 $sql_alllanguage="select * from language order by weight";
-$re_alllanguage=mysqli_query($conn, $sql_alllanguage);
-while($d_alllanguage=mysqli_fetch_array($re_alllanguage)){
-	$allLanguage[$d_alllanguage['shortName']] = ['id' => $d_alllanguage['id'],
-												'code' => $d_alllanguage['shortName'],
-													'title' => $d_alllanguage['title'],
-													'icon' => $d_alllanguage['icon']
+$re_alllanguage = $db->query($sql_alllanguage);
+foreach($re_alllanguage as $d_language){
+	$allLanguage[$d_language['shortName']] = ['id' => $d_language['id'],
+												'code' => $d_language['shortName'],
+													'title' => $d_language['title'],
+													'icon' => $d_language['icon']
 													];
 }
 $_SESSION['languages'] = $allLanguage;

@@ -1,7 +1,9 @@
 <?php
-include("include/conn.php");
-include("include/settings.php");
-include("include/utils.php");
+require("include/conn.php");
+require("include/settings.php");
+require("include/utils.php");
+require('models/property.php');
+require('models/property_type.php');
 
 $q = $_REQUEST['q'];
 $cat = isset($_REQUEST['cat']) ? $_REQUEST['cat'] : "";
@@ -70,11 +72,9 @@ if (isset($_REQUEST['maxbuildYear']) && $_REQUEST['maxbuildYear']) {
 	//$heading.=" in ".$q;
 }
 
-
-//echo $cond;
-$sql_property = "select  * from property where status='Y' " . $cond . "  and languageID='$languageID'  order by createdDate";
-$re_sql_property = mysqli_query($conn, $sql_property) or die(mysqli_error($conn));
-$noofcolumn = mysqli_num_rows($re_sql_property);
+$mProperty = new Property();
+$re_sql_property = $mProperty->getWhere($cond);
+$noofcolumn = count($re_sql_property);
 $heading = $noofcolumn . " Property Found ";
 // echo $sql_property;
 ?>
@@ -109,14 +109,10 @@ $dirrent = round($dirrent, -3);
 
 		<div id="listing">
 			<?php
-
-			while ($data_sql_property = mysqli_fetch_array($re_sql_property)) {
-
-				$sql_propertytype = "select  * from property_type where id='" . $data_sql_property['propertyTypeID'] . "' ";
-				$re_sql_propertytype = mysqli_query($conn, $sql_propertytype) or die(mysqli_error($conn));
-				$data_sql_propertytype = mysqli_fetch_array($re_sql_propertytype);
-				$url = $basepath . "property/" . makeUrl($data_sql_property['title']) . "-" . $data_sql_property['propertyID'] . ".html";
-
+			$mPropertyType = new Propertytype();
+			foreach($re_sql_property as $data_property){
+				$data_propertytype = $mPropertyType->find($data_property['propertyTypeID']);
+				$url = $basepath . "property/" . makeUrl($data_property['title']) . "-" . $data_property['propertyID'] . ".html";
 				include("view/property_box.php");
 			} ?>
 

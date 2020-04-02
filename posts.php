@@ -1,12 +1,12 @@
 <?php
-include("include/conn.php");
-include("include/settings.php");
-include("include/utils.php");
+require("include/conn.php");
+require("include/settings.php");
+require("include/utils.php");
+require('models/post.php');
 
 $id=$_REQUEST['id'];
-$sql_allpost="select * from post where  postID=$id and languageID=" . $_SESSION['languageID'];
-$re_allpost=mysqli_query($conn, $sql_allpost);
-$d_allpost=mysqli_fetch_array($re_allpost);
+$mPost = new Post();
+$d_post = $mPost->find($id);
 ?>
 
 <!--Start Header-->
@@ -14,17 +14,17 @@ $d_allpost=mysqli_fetch_array($re_allpost);
 <!--End Header-->
 
 <div id="container" class="variation">
-<h1><?=$d_allpost['title'] ?></h1>
+<h1><?=$d_post['title'] ?></h1>
 <div >
 <?php
-if($d_allpost['picture']!='')
+if($d_post['picture']!='')
 {
 ?>
-<div class="content_img"><img src="<?=$basepath?><?=$d_allpost['picture']?>" /></div>
+<div class="content_img"><img src="<?=$basepath?><?=$d_post['picture']?>" /></div>
 <?php
 }
 ?>
-<?=$d_allpost['content'] ?>
+<?=$d_post['content'] ?>
 </div>
 <div class="spacer"></div>
 </div>

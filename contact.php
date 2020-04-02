@@ -1,7 +1,7 @@
 <?php
-include('include/conn.php');
-include_once("include/functions.php");
-include('admin/models/property.php');
+require('include/conn.php');
+require("include/functions.php");
+include('models/property.php');
 
 unset($_SESSION['name']);
 unset($_SESSION['emailAddress']);
@@ -15,22 +15,22 @@ $_SESSION['phone']=trim($_POST['phone']);
 $_SESSION['message']=trim($_POST['message']);
 
 $id=$_REQUEST['id'];
-$data_property = Property::getProperty($conn,$id);
+$mProperty = new Property($conn);
+$data_property = $mProperty->find($id);
 $url=$basepath."property/".makeUrl($data_property['title'])."-".$data_property['propertyID'].".html";
 
 $query = "select adminEmailAddress from adminuser where id=1";
 $re_query = mysqli_query($conn,$query);
 $data_query = mysqli_fetch_array($re_query);
  $userEmail=$data_query['adminEmailAddress']; 
-//  die($userEmail);
-// $_SESSION['$userEmail']=$userEmail; die;
+
 $mailcontent = '';
 $mailcontent .= "<p>HOUSE INFO";
 $mailcontent .= "<p>========================================================================";
 $mailcontent .= "<p><strong>Title  : </strong>" . $data_property['title'] . "</p>";
 $mailcontent .= "<p><strong>Link  : </strong>" . $url . "</p>";
 $mailcontent .= "<p>========================================================================</p>";
-$mailcontent .= "<p>USER INFO";
+$mailcontent .= "<p>CUSTOMER INFO";
 $mailcontent .= "<p>========================================================================";
 $mailcontent .= "<p><strong>Name  : </strong> ".$_SESSION['name']."</p>";
 $mailcontent .= "<p><strong>Email  : </strong> ".$_SESSION['emailAddress']."</p>";
@@ -44,7 +44,7 @@ $headers ="From: ".$_SESSION['name']."<".$_SESSION['emailAddress'].">\n";
 $headers .= "MIME-Version: 1.0\n"; 
 $headers .= "Content-type: text/html; charset=iso-8859-1\n"; 
 $subject = '[NhaDatOnline] Request info for house '.$data_property['title'];
-// var_dump($subject); die();
+
 $message ="<html><head></head><body>"."<style type=\"text/css\">
 			<!--
 			.style4 {font-size: x-small}

@@ -24,11 +24,9 @@
         <div id="cssmenu">
             <ul>
                 <?php
-                $query_post = "select * from post where languageID='" . $languageID . "' and FIND_IN_SET('top',position)>0 order by id";
-                $re_menu = mysqli_query($conn, $query_post);
-                while ($d_menu = mysqli_fetch_array($re_menu)) {
+                $headerMenu = get_header_menu();
+                foreach($headerMenu as $d_menu){
                     $url = makeUrl($d_menu['title']) . "-" . $d_menu['postID'] . ".html";
-
                 ?>
                     <li><a href="<?= $url ?>"><?= $d_menu['title'] ?></a></li>
                 <?php } ?>

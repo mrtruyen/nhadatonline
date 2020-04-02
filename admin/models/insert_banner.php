@@ -1,4 +1,5 @@
 <?php
+global $conn;
 if (defined('BANNER_ADDNEW')) {
 	$weight = $_POST['weight'];
 	$status = $_POST['status'];
@@ -36,21 +37,25 @@ if (defined('BANNER_ADDNEW')) {
 		if ($id == '0' || !$_REQUEST['id']) {
 			$insert = "insert into banner (`picture`,`order`,`status`) values('$picture','$weight','$status')";
 	
-			if(!mysqli_query($conn, $insert)){
+			if(mysqli_query($conn, $insert)){
+				header("location:banner.php");
+				die();
+			}
+			else{
 				$_SESSION['INSERT_ERROR'][] = "DB Error: ".mysqli_error($conn);
-				// header("location:banner.php");
-				// die();
 			}
 	
 	
 		} else {
 			$update = "update banner set `picture`='$picture',`order`='$weight',`status`='$status' where id='$id'";
 				
-			if(!mysqli_query($conn, $update)){
-				$_SESSION['INSERT_ERROR'][] = "DB Error: ".mysqli_error($conn);
-				// $_SESSION['DB_SUCCESS'] = 1;
+			if(mysqli_query($conn, $update)){
+				$_SESSION['UPDATE_SUCCESS'] = 1;
 				// header("location:banner-addnew.php?id=$id");
 				// die();
+			}
+			else{
+				$_SESSION['INSERT_ERROR'][] = "DB Error: ".mysqli_error($conn);
 			}
 	
 			// @header("location:banner-addnew.php?id=$id");	

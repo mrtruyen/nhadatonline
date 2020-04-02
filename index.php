@@ -1,10 +1,7 @@
 <?php
-include("include/conn.php");
-include("include/settings.php");
-include("include/utils.php");
-
-$sql_banner="select  * from banner where status='Y' order by `order`";
-$re_sql_banner=mysqli_query($conn,$sql_banner) or die(mysqli_error($conn));
+require("include/conn.php");
+require("include/settings.php");
+require("include/utils.php");
 ?>
 
 <!--Start Header-->
@@ -39,12 +36,13 @@ $re_sql_banner=mysqli_query($conn,$sql_banner) or die(mysqli_error($conn));
     
 	<div class="slider">
       <ul class="slides">
-	  <?php
-		while($data_sql_banner=mysqli_fetch_array($re_sql_banner)) { ?>
+      <?php
+        $d_banner = get_banner_home();
+		foreach($d_banner as $banner) { ?>
 	  
         <li class="slide">
           <figure>
-            <img src="<?=$data_sql_banner['picture'] ?>" alt="">
+            <img src="<?=$banner['picture'] ?>" alt="">
           </figure>
         </li>
 		<?php } ?>

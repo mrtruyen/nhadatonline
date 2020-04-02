@@ -9,7 +9,7 @@ if (isset($_POST['submit_login'])) {
 
 	$re_select = mysqli_query($conn, $sql_select);
 	if (mysqli_num_rows($re_select) > 0) {
-		$_SESSION['adminSession_avoy'] = "sabyaavoy";
+		$_SESSION['adminSession'] = $_POST['admin_username'];
 		$_SESSION['adminAccount'] = mysqli_fetch_array($re_select);
 		$sql_alllanguage = "select * from " . $prev . "language order by weight limit 0,1";
 		$re_alllanguage = mysqli_query($conn, $sql_alllanguage);

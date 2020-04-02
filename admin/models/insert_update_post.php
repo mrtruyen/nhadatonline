@@ -1,4 +1,5 @@
 <?php
+global $conn;
 // var_dump($_POST); die();
 if (defined('POST_ADDNEW')) {
 	// var_dump(implode(',',$_POST['position'])); die();

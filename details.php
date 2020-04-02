@@ -1,16 +1,19 @@
 <?php
-include("include/conn.php");
-include("include/settings.php");
-include("include/utils.php");
+require("include/conn.php");
+require("include/settings.php");
+require("include/utils.php");
+require('models/property.php');
+require('models/property_type.php');
+
 $id = $_REQUEST['id'];
 
-$sql_property = "select  * from property where propertyID='$id' and languageID='" . $_SESSION['languageID'] . "'";
-$re_sql_property = mysqli_query($conn, $sql_property) or die(mysqli_error($conn));
-$data_sql_property = mysqli_fetch_array($re_sql_property);
+$mProperty = new Property();
+$data_sql_property = $mProperty->find($id);
 
-$sql_propertytype = "select  * from property_type where propertyTypeID='" . $data_sql_property['propertyTypeID'] . "' and languageID='" . $_SESSION['languageID'] . "'";
-$re_sql_propertytype = mysqli_query($conn, $sql_propertytype) or die(mysqli_error($conn));
-$data_sql_propertytype = mysqli_fetch_array($re_sql_propertytype);
+$propertyTypeID = @$data_sql_property['propertyTypeID'];
+
+$mPropertyType = new Propertytype();
+$data_sql_propertytype = $mPropertyType->find($propertyTypeID);
 
 ?>
 
@@ -71,10 +74,9 @@ $data_sql_propertytype = mysqli_fetch_array($re_sql_propertytype);
                             <ul>
                                 <?php
                                 $sql_postpic = "select file from picture where object_id='" . $id . "' order by id ";
-
-                                $re_postpic = mysqli_query($conn, $sql_postpic);
-                                if (mysqli_num_rows($re_postpic)) {
-                                    while ($d_postpic = mysqli_fetch_array($re_postpic)) {
+                                $re_postpic = $db->query($sql_postpic);
+                                if (count($re_postpic)) {
+                                    foreach($re_postpic as $d_postpic){
                                 ?>
                                         <li><a href="#"><img src="<?= $basepath ?><?= get_product_pic("upload/" . $d_postpic['file']) ?>" data-large="<?= $basepath ?><?= get_product_pic("upload/" . $d_postpic['file']) ?>" alt="" /></a></li>
                                     <?php
@@ -174,10 +176,6 @@ $data_sql_propertytype = mysqli_fetch_array($re_sql_propertytype);
     </div>
     <div class="spacer"></div>
 </div>
-
-
 <?php include("view/footer.php") ?>
-
 </body>
-
 </html>

@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['adminSession_avoy'])) {
+if (!isset($_SESSION['adminSession'])) {
     @header("location:login.php");
 }
 

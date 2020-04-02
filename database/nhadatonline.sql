@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2020 at 08:05 AM
+-- Generation Time: Apr 02, 2020 at 08:28 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.2.25
 
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `adminuser` (
 
 INSERT INTO `adminuser` (`id`, `username`, `password`, `adminName`, `adminEmailAddress`) VALUES
 (1, 'admin1', 'b6aa884efdd30793bb58211b80a2262c', 'Truyen Nguyen', 'mrtruyen.info@gmail.com'),
-(2, 'admin1', 'b6aa884efdd30793bb58211b80a2262c', 'Truyen Nguyen', ''),
-(3, 'admin1', 'b6aa884efdd30793bb58211b80a2262c', 'Truyen Nguyen', '');
+(2, 'admin2', '4297f44b13955235245b2497399d7a93', 'Yen Nguyen', 'songdau13@gmail.com'),
+(3, 'admin3', '4297f44b13955235245b2497399d7a93', 'Phi Long', 'philongg.ly@gmail.com');
 
 -- --------------------------------------------------------
 

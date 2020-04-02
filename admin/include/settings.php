@@ -2,6 +2,16 @@
 require('functions.php');
 require('utils.php');
 
+$vpath="";
+$prev="";
+$dotcom="Demo";
+$website_name="";
+$basepath="http://nhadatonline.vn/admin/";
+$basepath1="http://nhadatonline.vn/";
+$_SESSION['default_language'] = 'vi';
+
+$current_url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
 $_SESSION['backUrl']=curPageURL();
 $script_name=$_SERVER['SCRIPT_NAME'] ;
 $arr=explode('/',$script_name);
