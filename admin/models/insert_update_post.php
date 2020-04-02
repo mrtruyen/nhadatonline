@@ -15,11 +15,11 @@ if (defined('POST_ADDNEW')) {
 	$_SESSION['INSERT_ERROR'] = [];
 	foreach ($_SESSION['languages'] as $lang) {
 		if (!isset($_POST['title'][$lang['id']]) || empty(trim($_POST['title'][$lang['id']]))) {
-			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " title cannot be empty!";
+			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " title is required!";
 		}
 
 		if (!isset($_POST['content'][$lang['id']]) || empty(trim($_POST['content'][$lang['id']]))) {
-			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " content cannot be empty!";
+			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " content is required!";
 		}
 	}
 

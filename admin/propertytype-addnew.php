@@ -23,6 +23,10 @@ if(!empty($id))
 		$propertyType['status'] = $d_propertytype['status'];
 	}
 
+	$_SESSION['propertyType'] = isset($_SESSION['propertyType']) ? $_SESSION['propertyType']: $propertyType;
+}
+else{
+	unset($_SESSION['propertyType']);
 }
 ?>
 

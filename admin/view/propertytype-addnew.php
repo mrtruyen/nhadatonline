@@ -34,7 +34,7 @@
                 <?php
                 foreach ($_SESSION['languages'] as $d_alllanguage) {
                 ?>
-                <input type="text" name="title[<?= $d_alllanguage['id'] ?>]" placeholder="<?= $d_alllanguage['title'] ?>" value="<?= $id ? $propertyType['title'][$d_alllanguage['id']] : '' ?>" class="text_box_midium" />
+                <input type="text" name="title[<?= $d_alllanguage['id'] ?>]" placeholder="<?= $d_alllanguage['title'] ?>" value="<?= @$_SESSION['propertyType'] ? $_SESSION['propertyType']['title'][$d_alllanguage['id']] : '' ?>" class="text_box_midium" />
                 <?php
                 }
                 ?>
@@ -45,8 +45,8 @@
             <tr>
                 <th width="309">Status:</th>
                 <td width="648" align="left">
-                    <input type="radio" value="Y" name="status" id="statusYes" <?= (!$id || $propertyType['status'] == 'Y') ? 'checked="checked"' : '' ?> /><label for="statusYes">Yes </label>
-                    <input type="radio" value="N" name="status" id="statusNo" <?= ($id && $propertyType['status'] == 'N') ? 'checked="checked"' : '' ?> /><label for="statusNo">No </label>
+                    <input type="radio" value="Y" name="status" id="statusYes" <?= (!$id || $_SESSION['propertyType']['status'] == 'Y') ? 'checked="checked"' : '' ?> /><label for="statusYes">Yes </label>
+                    <input type="radio" value="N" name="status" id="statusNo" <?= (@$_SESSION['propertyType'] && $_SESSION['propertyType']['status'] == 'N') ? 'checked="checked"' : '' ?> /><label for="statusNo">No </label>
                 </td>
             </tr>
             <tr>
