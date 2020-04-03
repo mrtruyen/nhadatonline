@@ -1,6 +1,7 @@
 <?php
 require('include/conn.php');
 require("include/functions.php");
+require('include/settings.php');
 include('models/property.php');
 
 unset($_SESSION['name']);
@@ -15,14 +16,16 @@ $_SESSION['phone']=trim($_POST['phone']);
 $_SESSION['message']=trim($_POST['message']);
 
 $id=$_REQUEST['id'];
-$mProperty = new Property($conn);
+$mProperty = new Property();
 $data_property = $mProperty->find($id);
 $url=$basepath."property/".makeUrl($data_property['title'])."-".$data_property['propertyID'].".html";
 
 $query = "select adminEmailAddress from adminuser where id=1";
-$re_query = mysqli_query($conn,$query);
-$data_query = mysqli_fetch_array($re_query);
- $userEmail=$data_query['adminEmailAddress']; 
+$dataEmail = $db->fetchOne($query);
+$adminEmail = $dataEmail['adminEmailAddress'];
+// $re_query = mysqli_query($conn,$query);
+// $data_query = mysqli_fetch_array($re_query);
+//  $adminEmail=$data_query['adminEmailAddress']; 
 
 $mailcontent = '';
 $mailcontent .= "<p>HOUSE INFO";
@@ -54,25 +57,26 @@ $message ="<html><head></head><body>"."<style type=\"text/css\">
 			</body><html>"; 
 			
 // echo $mailcontent; die();
-// try{
-	
-// }
-// catch(Exception $e){
-// 	echo $e->getMessage();
-// }
-@mail($userEmail,$subject, $message,$headers);
-unset($_SESSION['name']);
-unset($_SESSION['emailAddress']);
-unset($_SESSION['subject']);
+// var_dump($adminEmail) ; die();
+try{
+	@mail($adminEmail,$subject, $message,$headers);
+	unset($_SESSION['name']);
+	unset($_SESSION['emailAddress']);
+	unset($_SESSION['subject']);
 
-unset($_SESSION['message']);
+	unset($_SESSION['message']);
 
 
-$_SESSION['padding']=100;
+	$_SESSION['padding']=100;
 
-$_SESSION['contact_success']=100;
+	$_SESSION['contact_success']=100;
 
-@header("location:$url");
+	@header("location:$url");
+}
+catch(Exception $e){
+	echo $e->getMessage();
+}
+
 // if(@mail($userEmail,$subject, $message,$headers)){
 // 	unset($_SESSION['name']);
 // 	unset($_SESSION['emailAddress']);

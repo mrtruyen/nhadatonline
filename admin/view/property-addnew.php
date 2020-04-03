@@ -113,7 +113,7 @@
       </tr>
       <tr>
         <th width="251">Area:</th>
-        <td width="752" align="left"><input type="text" name="area" value="<?= isset($_SESSION['d_property']['area']) ? $_SESSION['d_property']['area'] : '' ?>" class="text_box_midium" />(sqft)</td>
+        <td width="752" align="left"><input type="text" name="area" value="<?= isset($_SESSION['d_property']['area']) ? $_SESSION['d_property']['area'] : '' ?>" class="text_box_midium" /></td>
       </tr>
       <tr>
         <th width="251">Lot Size:</th>
