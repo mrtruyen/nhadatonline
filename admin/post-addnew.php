@@ -8,6 +8,9 @@ if (isset($_POST['submit'])) {
   require('include/error.php');
 	require('models/insert_update_post.php');
 }
+else{
+  unset($_SESSION['d_post']);
+}
 
 $id=isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 if(!empty($id))
@@ -24,9 +27,7 @@ if(!empty($id))
 
   $_SESSION['d_post'] = isset($_SESSION['d_post']) ? $_SESSION['d_post']: $d_post;
 }
-else{
-  unset($_SESSION['d_post']);
-}
+
 // var_dump($d_post); die();
 ?>
 <?php 

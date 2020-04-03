@@ -2,6 +2,7 @@
 global $conn;
 
 if (defined('PROPERTY_ADDNEW')) {
+	// var_dump($_POST); die();
 	$_SESSION['d_property'] = $_POST;
 	$categoryID = mysqli_real_escape_string($conn, trim($_POST['categoryID']));
 	$propertytypeID = mysqli_real_escape_string($conn, trim($_POST['propertyTypeID']));

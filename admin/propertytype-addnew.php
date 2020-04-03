@@ -8,7 +8,9 @@ if (isset($_POST['submit'])) {
 	require('include/error.php');
 	require('models/insert_update_propertytype.php');
 }
-
+else{
+	unset($_SESSION['propertyType']);
+}
 $id=isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
 if(!empty($id))
@@ -25,9 +27,7 @@ if(!empty($id))
 
 	$_SESSION['propertyType'] = isset($_SESSION['propertyType']) ? $_SESSION['propertyType']: $propertyType;
 }
-else{
-	unset($_SESSION['propertyType']);
-}
+
 ?>
 
 <?php include("view/header.php")?>

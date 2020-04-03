@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 02, 2020 at 08:28 AM
+-- Generation Time: Apr 03, 2020 at 08:34 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.2.25
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `banner` (
   `order` int(11) NOT NULL,
   `status` enum('Y','N') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `banner`
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `property` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `noOfRoom` int(11) NOT NULL,
   `noOfBedrooms` int(11) NOT NULL,
   `noOfBathrooms` int(11) NOT NULL,
@@ -192,10 +192,10 @@ CREATE TABLE IF NOT EXISTS `property` (
 --
 
 INSERT INTO `property` (`id`, `title`, `picture`, `description`, `noOfRoom`, `noOfBedrooms`, `noOfBathrooms`, `buildYear`, `area`, `lotSize`, `location`, `city`, `price`, `saleStatus`, `propertyID`, `propertyTypeID`, `categoryID`, `languageID`, `status`, `createdDate`) VALUES
-(1, 'NhÃ  sá»‘ 1', 'upload/1585191800n_image3.png', '<p>Vietnamese</p>', 6, 4, 2, 2015, 150, 500, '111 Cach Mang Thang 8', 'Ho Chi Minh', 500000, 'N', 1, 1, 1, 1, 'Y', '2020-03-25 16:27:19'),
-(2, 'House 1', 'upload/1585191800n_image3.png', '<p>English</p>', 6, 4, 2, 2015, 150, 500, '111 Cach Mang Thang 8', 'Ho Chi Minh', 500000, 'N', 1, 1, 1, 2, 'Y', '2020-03-25 16:27:19'),
+(1, 'NhÃ  sá»‘ 1', 'upload/1585902766big_thumb.png', '<p><span style=\"color: #000000; font-family: tahoma; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Ch&iacute;nh chá»§ b&aacute;n gáº¥p cÄƒn há»™ cao cáº¥p Riverpark Premier, Quáº­n 7, Há»“ Ch&iacute; Minh.Khu cÄƒn há»™ Ä‘áº§y Ä‘á»§ tiá»‡n &iacute;ch nhÆ°: Há»“ bÆ¡i, gym, si&ecirc;u thá»‹, trÆ°á»ng quá»‘c táº¿, ng&acirc;n h&agrave;ng,...Sá»• há»“ng cáº§m tay.- Gi&aacute; trá»‹ náº±m á»Ÿ cháº¥t lÆ°á»£ng!*</span></p>', 6, 4, 2, 2015, 150, 500, '111 Cach Mang Thang 8', 'Ho Chi Minh', 500000, 'N', 1, 1, 1, 1, 'Y', '2020-03-25 16:27:19'),
+(2, 'House 1', 'upload/1585902766big_thumb.png', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 6, 4, 2, 2015, 150, 500, '111 Cach Mang Thang 8', 'Ho Chi Minh', 500000, 'N', 1, 1, 1, 2, 'Y', '2020-03-25 16:27:19'),
 (3, 'NhÃ  sá»‘ 2', 'upload/1585462837image3.png', '<p>Vietnamese</p>', 5, 3, 2, 2016, 200, 300, '123 Ly Chinh Thang', 'Ho Chi Minh', 300000, 'N', 2, 1, 1, 1, 'Y', '2020-03-29 06:20:37'),
-(4, 'House 2', 'upload/1585462837image3.png', '<p>English</p>', 5, 3, 2, 2016, 200, 300, '123 Ly Chinh Thang', 'Ho Chi Minh', 300000, 'N', 2, 1, 1, 2, 'Y', '2020-03-29 06:20:37');
+(4, 'House 2', 'upload/1585462837image3.png', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>', 5, 3, 2, 2016, 200, 300, '123 Ly Chinh Thang', 'Ho Chi Minh', 300000, 'N', 2, 1, 1, 2, 'Y', '2020-03-29 06:20:37');
 
 -- --------------------------------------------------------
 

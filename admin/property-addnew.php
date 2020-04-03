@@ -9,6 +9,9 @@ if (isset($_POST['submit'])) {
   require('include/error.php');
   require('models/insert_update_property.php');
 }
+else{
+  unset($_SESSION['d_property']);
+}
 
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
 
@@ -37,9 +40,6 @@ if (!empty($id)) {
   }
   $_SESSION['d_property'] = isset($_SESSION['d_property']) ? $_SESSION['d_property'] : $d_property;
   // var_dump($d_property); die();
-}
-else{
-  unset($_SESSION['d_property']);
 }
 ?>
 <?php
