@@ -33,9 +33,7 @@ $static_array['sold']="Đã bán";
 $static_array['show']="Xem chi tiết";
 $static_array['detailsform_msg']="Tìm hiểu thêm về nhà này";
 $static_array['printmsg']="Yêu cầu của bạn đã được gửi đi thành công!";
-
 $static_array['detailsform_msg']="Learn more about this property";
-$static_array['printmsg']="You have sucessfully send message to agent!";
 $static_array['request_info']="Request Info";
 $static_array['contact_name']="Tên của bạn";
 $static_array['contact_email']="Email của bạn";

@@ -59,7 +59,7 @@ $message ="<html><head></head><body>"."<style type=\"text/css\">
 // echo $mailcontent; die();
 // var_dump($adminEmail) ; die();
 try{
-	@mail($adminEmail,$subject, $message,$headers);
+	mail($adminEmail,$subject, $message,$headers);
 	unset($_SESSION['name']);
 	unset($_SESSION['emailAddress']);
 	unset($_SESSION['subject']);
@@ -71,7 +71,7 @@ try{
 
 	$_SESSION['contact_success']=100;
 
-	@header("location:$url");
+	header("location:$url");
 }
 catch(Exception $e){
 	echo $e->getMessage();
