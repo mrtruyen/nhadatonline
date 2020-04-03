@@ -28,7 +28,7 @@
                 foreach($headerMenu as $d_menu){
                     $url = makeUrl($d_menu['title']) . "-" . $d_menu['postID'] . ".html";
                 ?>
-                    <li><a href="<?= $url ?>"><?= $d_menu['title'] ?></a></li>
+                    <li><a href="<?= $basepath ?><?= $url ?>"><?= $d_menu['title'] ?></a></li>
                 <?php } ?>
 
 

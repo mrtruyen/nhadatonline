@@ -9,7 +9,7 @@
 				foreach ($footerMenu as $d_menu) {
 					$url = makeUrl($d_menu['title']) . "-" . $d_menu['id'] . ".html";
 				?>
-					<li><a href="<?= $url ?>" class="active"><?= $d_menu['title'] ?></a></li>
+					<li><a href="<?= $basepath ?><?= $url ?>" class="active"><?= $d_menu['title'] ?></a></li>
 				<?php
 				}
 				?>
