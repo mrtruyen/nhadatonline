@@ -17,6 +17,7 @@ if (defined('PROPERTY_ADDNEW')) {
 	$buildYear = mysqli_real_escape_string($conn, trim($_POST['buildYear']));
 	$saleStatus = mysqli_real_escape_string($conn, trim($_POST['saleStatus']));
 	$status = mysqli_real_escape_string($conn, trim($_POST['status']));
+	$unit = $_POST['unit'];
 	$picture = $_POST['picturepath'];
 
 	$date = new DateTime();
@@ -42,33 +43,34 @@ if (defined('PROPERTY_ADDNEW')) {
 		}
 	}
 
-	if(!is_numeric($noOfRoom) || $noOfRoom < 0){
-		$_SESSION['INSERT_ERROR'][] = "Number Of Rooms must be a number";
+	if(!is_numeric($noOfRoom) || $noOfRoom <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Number Of Rooms must be a positive number";
 	}
 
-	if(!is_numeric($noOfBedrooms) || $noOfBedrooms < 0){
-		$_SESSION['INSERT_ERROR'][] = "Number Of Bedrooms must be a number";
+	if(!is_numeric($noOfBedrooms) || $noOfBedrooms <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Number Of Bedrooms must be a positive number";
 	}
 
-	if(!is_numeric($noOfBathrooms) || $noOfBathrooms < 0){
-		$_SESSION['INSERT_ERROR'][] = "Number Of Bathrooms must be a number";
+	if(!is_numeric($noOfBathrooms) || $noOfBathrooms <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Number Of Bathrooms must be a positive number";
 	}
 
-	if(!is_numeric($price) || $price < 0){
-		$_SESSION['INSERT_ERROR'][] = "Price must be a number";
+	if(!is_numeric($price) || $price <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Price must be a positive number";
 	}
 
-	if(!is_numeric($area) || $area < 0){
-		$_SESSION['INSERT_ERROR'][] = "Area must be a number";
+	if(!is_numeric($area) || $area <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Area must be a positive number";
 	}
 
-	if(!is_numeric($lotSize) || $lotSize < 0){
-		$_SESSION['INSERT_ERROR'][] = "Lot Size must be a number";
+	if(!is_numeric($lotSize) || $lotSize <= 0){
+		$_SESSION['INSERT_ERROR'][] = "Lot Size must be a positive number";
 	}
 	
 	if (empty($_SESSION['INSERT_ERROR'])) {
 
 		$objectID = get_new_id('property','id','propertyID');
+		$price = ($unit == 1) && ($categoryID == 1) ? round($price)/1000 : $price;
 		foreach ($_SESSION['languages'] as $lang) {
 
 			$title = mysqli_real_escape_string($conn, trim($_POST['title'][$lang['id']]));
@@ -84,13 +86,10 @@ if (defined('PROPERTY_ADDNEW')) {
 					$updatepicture = "update picture set object_id='" . $objectID . "' where object_id='0'";
 					mysqli_query($conn, $updatepicture);
 					unset($_SESSION['d_property']);
-					header("location:property.php");
-					die();
 				}
 				else{
 					$_SESSION['INSERT_ERROR'][] = mysqli_error($conn);
 				}
-
 				
 			} else {
 				$query = "update property  set
@@ -127,6 +126,10 @@ if (defined('PROPERTY_ADDNEW')) {
 					$_SESSION['INSERT_ERROR'][] = mysqli_error($conn);
 				}
 			}
+		}
+		if(!$id){
+			header("location:property.php");
+			die();
 		}
 	}
 }

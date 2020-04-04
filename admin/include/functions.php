@@ -80,9 +80,14 @@ function makeUrl($title, $id) {
 	$arr = array ();
 	$title = trim ( $title );
 	$title = str_replace ( ' ', '-', $title );
+	$title = str_replace ( '&', '-', $title );
 	$title = strtolower ( $title ) . '-' . $id . '.html';
 	
 	return $title;
+}
+
+function convertPrice($price){
+	return ($price < 1) ? $price * 1000 : $price;
 }
 
 function checkMimeType($filename, $acceptedMime=[]){

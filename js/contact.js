@@ -31,12 +31,12 @@ function valid_contact(src)
 	var message=document.getElementById('message').value;
 	
 	//alert( message);
-	if(name=='')
+	if(name.trim()=='')
 	{
 		printerror_item(src,'Name Field is Required.');
 		return false;
 	}
-	if(email=='')
+	if(email.trim()=='')
 	{
 		printerror_item(src,'Email Address is Required.');
 		return false;
@@ -45,7 +45,7 @@ function valid_contact(src)
 		printerror_item(src,'Contact email address is not valid.');
 		return false;
 	}
-	if(phone=='')
+	if(phone.trim()=='')
 	{
 		printerror_item(src,'Phone Number is Required.');
 		return false;
@@ -56,9 +56,9 @@ function valid_contact(src)
 		return false;
 	}
 	
-	if(message=='')
+	if(message.trim()=='')
 	{
-		printerror_item(src,'Message Field is Required.');
+		printerror_item(src,'Message field is Required.');
 		return false;
 	}
 	return true;

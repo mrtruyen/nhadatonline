@@ -122,6 +122,7 @@ function makeUrl($title) {
 	$arr = array ();
 	$title = trim ( $title );
 	$title = str_replace ( ' ', '-', $title );
+	$title = str_replace ( '&', '-', $title );
 	$title = strtolower ( $title );
 	
 	return $title;
@@ -355,5 +356,9 @@ function get_float_value($number) {
 }
 function get_float_value1($number) {
 	return number_format ( $number, 0, '.', ',' );
+}
+
+function convertPrice($price){
+	return ($price < 1) ? $price * 1000 : $price;
 }
 ?>

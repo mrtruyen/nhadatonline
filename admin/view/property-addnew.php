@@ -99,7 +99,10 @@
 
       <tr>
         <th width="251"> Price:</th>
-        <td width="752" align="left"><input type="text" name="price" value="<?= isset($_SESSION['d_property']['price']) ? $_SESSION['d_property']['price'] : '' ?>" class="text_box_midium" /><label>$</label></td>
+        <td width="752" align="left"><input type="text" name="price" value="<?= isset($_SESSION['d_property']['price']) ? convertPrice($_SESSION['d_property']['price']) : '' ?>" class="text_box_midium" />&nbsp;<select class="select_box" style="width:60px" name="unit">
+            <option value="2" <?= (@$_SESSION['d_property']['price'] >= 1 && @$_SESSION['d_property']['categoryID'] == 1) ? 'selected="selected"' : '' ?> <?= (@$_SESSION['d_property']['categoryID'] == 2) ? 'disabled' : '' ?>>Tỷ</option>
+            <option value="1" <?= (@$_SESSION['d_property']['price'] < 1 || @$_SESSION['d_property']['categoryID'] == 2) ? 'selected="selected"' : '' ?>>Triệu</option>
+        </td>
       </tr>
 
       <tr>

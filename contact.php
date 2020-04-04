@@ -23,9 +23,6 @@ $url=$basepath."property/".makeUrl($data_property['title'])."-".$data_property['
 $query = "select adminEmailAddress from adminuser where id=1";
 $dataEmail = $db->fetchOne($query);
 $adminEmail = $dataEmail['adminEmailAddress'];
-// $re_query = mysqli_query($conn,$query);
-// $data_query = mysqli_fetch_array($re_query);
-//  $adminEmail=$data_query['adminEmailAddress']; 
 
 $mailcontent = '';
 $mailcontent .= "<p>HOUSE INFO";

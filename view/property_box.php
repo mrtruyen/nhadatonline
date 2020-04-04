@@ -20,11 +20,11 @@
                 <?php
                 if ($data_property['categoryID'] == 1) {
                 ?>
-                    <span class="price">$<?= $data_property['price'] ?></span>
+                    <span class="price"><?= ($data_property['price']) ?> tỷ</span>
                     <?php
                 } else {
                     ?>
-                        <span class="price">$<?= $data_property['price'] ?>/Month</span>
+                        <span class="price"><?= $data_property['price'] ?> triệu/tháng</span>
 
                     <?php
                 }

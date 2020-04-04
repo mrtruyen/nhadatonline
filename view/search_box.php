@@ -7,8 +7,8 @@
         <div class="spacer"></div>
         <div class="select-part">
             <select class="select" name="cat" id="cat" onchange="getPrice()">
-                <option value="1"><?= get_lang('cat1', $_SESSION['languageCode']) ?></option>
-                <option value="2"><?= get_lang('cat2', $_SESSION['languageCode']) ?></option>
+                <option value="1" <?= (@$_REQUEST['cat'] == 1) ? 'selected' : '' ?>><?= get_lang('cat1', $_SESSION['languageCode']) ?></option>
+                <option value="2" <?= (@$_REQUEST['cat'] == 2) ? 'selected' : '' ?>><?= get_lang('cat2', $_SESSION['languageCode']) ?></option>
 
             </select>
         </div>
@@ -19,16 +19,19 @@
                 <?php
                 $maxPrice = get_max_price();
                 $minPrice = get_min_price();
-                // var_dump($minPrice);
+                // var_dump($maxPrice); die();
                 // $dirrent = 50000;
-                $dirrent = (($maxPrice - $minPrice) / 10);
-                $dirrent = round($dirrent, -3);
-                for ($i = $minPrice; $i <= $maxPrice; $i = $i + $dirrent) {
+                $dirrent = round(($maxPrice - $minPrice) / 10);
+                // $dirrent = round($dirrent, -3);
+                // var_dump($dirrent); die();
+                for ($i = $minPrice; $i < $maxPrice; $i = $i + $dirrent) {
+                    // var_dump($i); die();
                 ?>
-                    <option value="<?= $i ?>" <?php if ($i == $minPrice || @$_REQUEST['minP'] == $i) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
+                    <option value="<?= $i ?>" <?php if ($i == $minPrice || @$_REQUEST['minP'] == $i) { ?> selected="selected" <?php } ?>><?= $i ?>&nbsp;tỷ</option>
                 <?php
                 }
                 ?>
+                <option value="<?= $maxPrice ?>" <?= (@$_REQUEST['minP'] == $maxPrice) ? 'selected' : '' ?>><?= $maxPrice ?>&nbsp;tỷ</option>
             </select>
         </div>
 
@@ -41,12 +44,13 @@
                 // $dirrent = 50000;
                 // $dirrent = (($maxPrice - $minPrice) / 10) + $minPrice;
                 // $dirrent = round($dirrent, -3);
-                for ($i = $minPrice; $i <= $maxPrice; $i = $i + $dirrent) {
+                for ($i = $minPrice; $i < $maxPrice; $i = $i + $dirrent) {
                 ?>
-                    <option value="<?= $i ?>" <?php if ($i == $maxPrice || @$_REQUEST['maxP'] == $i) { ?> selected="selected" <?php } ?>>$<?= get_float_value1($i) ?></option>
+                    <option value="<?= $i ?>" <?php if ($i == $maxPrice || @$_REQUEST['maxP'] == $i) { ?> selected="selected" <?php } ?>><?= get_float_value1($i) ?>&nbsp;tỷ</option>
                 <?php
                 }
                 ?>
+                <option value="<?= $maxPrice ?>" <?= (@$_REQUEST['maxP'] == $maxPrice) ? 'selected' : '' ?>><?= $maxPrice ?>&nbsp;tỷ</option>
             </select>
         </div>
 

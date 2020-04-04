@@ -67,7 +67,7 @@ require("include/utils.php");
 
 <script>
 $(document).ready(function(){
-    getPrice();
+    // getPrice();
 });
 
 
@@ -84,7 +84,7 @@ function getPrice()
     $.ajax({
             url:'ajax_get_price.php',
             type:'POST',
-            data:'cat='+cat+'&priceMIN='+priceMIN+'&priceMAX='+priceMAX,
+            data:'cat='+cat+'&minP='+priceMIN+'&maxP='+priceMAX,
             dataType:'json',
             success:function(data)
                 {  

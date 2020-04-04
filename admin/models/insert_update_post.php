@@ -57,7 +57,6 @@ if (defined('POST_ADDNEW')) {
 				// echo $insert; die();
 				if(mysqli_query($conn, $query)){
 					unset($_SESSION['d_post']);
-					$path = $basepath . "post.php";
 				}
 				else{
 					$_SESSION['INSERT_ERROR'][] = "DB Error" . mysqli_error($conn);
@@ -79,7 +78,7 @@ if (defined('POST_ADDNEW')) {
 		// die();
 		}
 		if(!$id){
-			@header("location:$path");
+			@header("location:post.php");
 			die();
 		}
 		

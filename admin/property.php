@@ -21,7 +21,7 @@ $perpage = 10;
 $page = (int) (!isset($_GET["page"]) ? 1 : $_GET["page"]);
 $page = ($page == 0 ? 1 : $page);
 $startpoint = ($page * $perpage) - $perpage;
-$sql = "select * from property where languageID='" . $_SESSION['languageID'] . "'   LIMIT $startpoint,$perpage";
+$sql = "select * from property where languageID='" . $_SESSION['languageID'] . "' order by createdDate desc  LIMIT $startpoint,$perpage";
 $r = mysqli_query($conn, $sql);
 
 ?>

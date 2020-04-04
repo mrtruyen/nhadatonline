@@ -53,7 +53,9 @@
 								?>
 								<a href="javascript:if(confirm('Are you sure you want to delete it?')){window.location='<?= $_SERVER['PHP_SELF'] ?>?&id=<?= $d['propertyID'] ?>&del=delete'}" class="delete_link"></a>
 								<?php // endif;
-								?> </td>
+								?> 
+								<a href="<?= $basepath1 ?>/property/<?= makeUrl($d['title'], $d['propertyID']) ?>" target="_blank" class="view_link" title="View"></a>
+								</td>
 						</tr>
 					<?php
 						$i++;

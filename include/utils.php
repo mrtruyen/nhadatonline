@@ -39,15 +39,15 @@ function get_website_link($website) {
 	return $str;
 }
 
-function get_max_price() {
-	$sql_query = "select MAX(price) as price from property where categoryID=1";
+function get_max_price($categoryID=1) {
+	$sql_query = "select MAX(price) as price from property where categoryID=$categoryID";
 	$db = Database::getInstance();
 	$d_row = $db->fetchOne($sql_query);
 	return $d_row ? $d_row ['price'] : 100000;
 }
 
-function get_min_price() {
-	$sql_query = "select MIN(price) as price from property where categoryID=1";
+function get_min_price($categoryID=1) {
+	$sql_query = "select MIN(price) as price from property where categoryID=$categoryID";
 	$db = Database::getInstance();
 	$d_row = $db->fetchOne($sql_query);
 	return $d_row ? $d_row ['price'] : 100000;
