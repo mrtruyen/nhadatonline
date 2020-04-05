@@ -17,6 +17,7 @@ $static_array['minP']="Min Price";
 $static_array['maxP']="Max Price";
 $static_array['bath']="Bath room";
 $static_array['bed']="Bed room";
+$static_array['propertyType']="Property Type";
 
 $static_array['noOfRoom']="Number Of Rooms";
 $static_array['noOfBedrooms']="Number Of Bedrooms";

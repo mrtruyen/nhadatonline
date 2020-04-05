@@ -1,5 +1,6 @@
 <?php
-require_once("include/functions.php");
+require_once("constant.php");
+require_once("functions.php");
 require_once('database.php');
 
 $basepath="http://nhadatonline.vn/";

@@ -10,7 +10,7 @@ if(@$_REQUEST['del']=="delete")
    	mysqli_query($conn,$del) or die($err);
 }
 
-if (isset($_POST['delete_all'])) {
+if (isset($_POST['delete_checked'])) {
 	require('models/deleteall_propertytype.php');
 }
 

@@ -1,6 +1,20 @@
+
 <div class="box_middle">
+<?php
+// var_dump($_SESSION['DELETED_CHECKED']);
+if(@$_SESSION['DELETED_CHECKED']){
+	foreach($_SESSION['DELETED_CHECKED'] as $title){
+?>
+	<p align="center" class="" style="padding-right:10px; color:#FF0000; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:13px;">
+                            <?= "Deleted ".$title ?>
+	</p>
+<?php	
+	}
+	unset($_SESSION['DELETED_CHECKED']);
+}
+?>
 	<h3 style="text-align:left;">Property List</h3>
-	<form name="" method="post" action="deleteall_property.php">
+	<form id="frm-listing" name="" method="post" action="property.php">
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="showlist">
 			<thead>
 				<tr>
@@ -69,7 +83,8 @@
 				?>
 			</tbody>
 		</table>
-		<div style="width:100%" class="deleteall_margin"><input type="submit" name="delete_all" class="back_botton" value="Delete" /></div>
+		<input type="hidden" name="delete_checked" value="1"/>
+		<div style="width:100%" class="deleteall_margin"><input type="button" onclick="deleteChecked()" name="delete_all" class="back_botton" value="Delete" /></div>
 		<div style="width:100%;padding-top:30px;"><?php echo Pages("property", $perpage, "property.php?", $cond); ?></div>
 	</form>
 	<div style="width:100%;padding-top:30px;">
@@ -80,5 +95,11 @@
 <div class="spacer"></div>
 </div>
 </body>
-
+<script>
+	function deleteChecked(){
+		if(confirm('Are you sure you want to delete all checked items?')){
+			$('#frm-listing').submit();
+		}
+	}
+</script>
 </html>

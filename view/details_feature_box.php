@@ -27,7 +27,7 @@
                 <li><?= get_lang('buildYear', $_SESSION['languageCode']) ?>: <?= $data_sql_property['buildYear'] ?></li>
                 <li><?= get_lang('area', $_SESSION['languageCode']) ?>: <?= $data_sql_property['area'] ?>(M2)</li>
                 <li><?= $data_sql_propertytype['title'] ?></li>
-                <li><?= get_lang('city', $_SESSION['languageCode']) ?>: <?= $data_sql_property['city'] ?></li>
+                <li><?= get_lang('city', $_SESSION['languageCode']) ?>: <?= @$lstCity[$data_sql_property['city']] ?></li>
             </ul>
             <div class="spacer"></div>
         </div>

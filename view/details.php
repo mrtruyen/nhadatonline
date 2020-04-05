@@ -1,6 +1,6 @@
 <div id="container" class="myaccount">
     <div class="prdctTtl"><?= $data_sql_property['title'] ?></div>
-    <p class="productftr"><?= $data_sql_property['location'] ?>, <?= $data_sql_property['city'] ?></p>
+    <p class="productftr"><?= $data_sql_property['location'] ?>, <?= @$lstCity[$data_sql_property['city']] ?></p>
 
     <div id="slidingGalleryForm">
         <div class="dtlsgallery">

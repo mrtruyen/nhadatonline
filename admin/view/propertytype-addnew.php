@@ -29,7 +29,7 @@
                 </tr>
             <?php } ?>
             <tr>
-                <th width="251"> Title:</th>
+                <th width="251"> Name(*):</th>
                 <td width="251" align="left">
                 <?php
                 foreach ($_SESSION['languages'] as $d_alllanguage) {

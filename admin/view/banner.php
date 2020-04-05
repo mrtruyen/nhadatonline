@@ -8,7 +8,7 @@
       <?php  unset($_SESSION['DB_ERROR']); ?>
       <?php } ?>
 <h3 style="text-align:left;">Banner List <a href="banner-addnew.php" class="button">Add New</a></h3>
-<form name="" method="post" action="banner.php">
+<form id="frm-listing" name="" method="post" action="banner.php">
 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="showlist">
 <thead>
   <tr >
@@ -67,7 +67,8 @@ while($d=@mysqli_fetch_array($r))
  ?> 
 </tbody>
 </table>
-<div style="width:100%"  class="deleteall_margin"><input type="submit" name="delete_all" class="back_botton" value="Delete" /></div>
+<input type="hidden" name="delete_checked" value="1"/>
+<div style="width:100%"  class="deleteall_margin"><input type="button" onclick="deleteChecked()" class="back_botton" value="Delete" /></div>
 <div style="width:100%;padding-top:30px;"><?php	echo Pages("banner",$perpage,"banner.php?"); ?>
 </form>
 <div style="width:100%;padding-top:30px;">
@@ -78,4 +79,11 @@ while($d=@mysqli_fetch_array($r))
 <div class="spacer"></div>
 </div>
 </body>
+<script>
+	function deleteChecked(){
+		if(confirm('Are you sure you want to delete all checked items?')){
+			$('#frm-listing').submit();
+		}
+	}
+</script>
 </html>

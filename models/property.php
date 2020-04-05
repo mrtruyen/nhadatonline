@@ -17,10 +17,15 @@ class Property extends Database{
         return $data_property;
     }
 
-    public function getWhere($cond){
-        $sql_query = "select  * from property where status='Y' " . $cond . "  and languageID='".$_SESSION['languageID']."'  order by createdDate";
+    public function getLimit($limit,$start,$cond=''){
+        $sql_query = "select  * from property " . $cond . "  order by createdDate limit $start,$limit";
         $data = $this->query($sql_query);
         return $data;
+    }
 
+    public function getAll($cond=''){
+        $sql_query = "select  * from property " . $cond . "  order by createdDate";
+        $data = $this->query($sql_query);
+        return $data;
     }
 }

@@ -2,29 +2,34 @@
 require("include/conn.php");
 require("include/settings.php");
 require("include/utils.php");
+require("include/pagination.php");
 require('models/property.php');
 require('models/property_type.php');
 
-$q = $_REQUEST['q'];
-$cat = isset($_REQUEST['cat']) ? $_REQUEST['cat'] : "";
-$minP = isset($_REQUEST['minP']) ? $_REQUEST['minP'] : -1;
-$maxP = isset($_REQUEST['maxP']) ? $_REQUEST['maxP'] : -1;
-$bath = isset($_REQUEST['bath']) ? $_REQUEST['bath'] : -1;
-$bed = isset($_REQUEST['bed']) ? $_REQUEST['bed'] : -1;
-$lotSize = isset($_REQUEST['lotSize']) ? $_REQUEST['lotSize'] : "";
-$minsqFeet = isset($_REQUEST['minsqfeet']) ? $_REQUEST['minsqfeet'] : "";
-$maxsqFeet = isset($_REQUEST['maxsqFeet']) ? $_REQUEST['maxsqFeet'] : "";
-$minbuildYear = isset($_REQUEST['minbuildYear']) ? $_REQUEST['minbuildYear'] : "";
-$maxbuildYear = isset($_REQUEST['maxbuildYear']) ? $_REQUEST['maxbuildYear'] : "";
-
+$q = @$_REQUEST['q'];
+$cat = @$_REQUEST['cat'];
+$propertyType =@$_REQUEST['propertyType'];
+$minP = @$_REQUEST['minP'];
+$maxP = @$_REQUEST['maxP'];
+$bath = @$_REQUEST['bath'];
+$bed = @$_REQUEST['bed'];
+$lotSize = @$_REQUEST['lotSize'];
+$minsqFeet = @$_REQUEST['minsqfeet'];
+$maxsqFeet = @$_REQUEST['maxsqfeet'];
+$minbuildYear = @$_REQUEST['minbuildYear'];
+$maxbuildYear = @$_REQUEST['maxbuildYear'];
+// var_dump($_SERVER['REQUEST_URI']); die();
 $cond = '';
 $heading = "Search  ";
 if ($cat) {
 	$cond .= " and categoryID='" . $cat . "'";
 }
+if ($propertyType) {
+	$cond .= " and propertyTypeID='" . $propertyType . "'";
+}
 if ($q) {
-	$searchtext = mysqli_real_escape_string($conn, $q);
-	$cond .= " and (title like '%$searchtext%' or city like '%$searchtext%' or  location like '%$searchtext%' )";
+	$searchtext = strtolower(mysqli_real_escape_string($conn, $q));
+	$cond .= " and (LOWER(title) like '%$searchtext%' or LOWER(city) like '%$searchtext%' or  LOWER(location) like '%$searchtext%' )";
 	$heading .= " in " . $q;
 }
 if ($minP) {
@@ -37,45 +42,58 @@ if ($maxP) {
 	$cond .= " and price<='$maxP'";
 	//$heading.=" in ".$q;
 }
-if ($bath && $bath != '-1') {
+if ($bath) {
 
-	$cond .= " and noOfBathrooms='$bath'";
+	$cond .= " and noOfBathrooms>='$bath'";
 	//$heading.=" in ".$q;
 }
-if ($bed && $bed != '-1') {
+if ($bed) {
 
-	$cond .= " and noOfBedrooms='$bed'";
+	$cond .= " and noOfBedrooms>='$bed'";
 	//$heading.=" in ".$q;
 }
 
-if (isset($_REQUEST['minsqfeet']) && $_REQUEST['minsqfeet']) {
+if ($minsqFeet) {
 
-	$cond .= " and area>='" . $_REQUEST['minsqfeet'] . "'";
+	$cond .= " and area>=" . $minsqFeet;
 	//$heading.=" in ".$q;
 }
-if (isset($_REQUEST['maxsqfeet']) && $_REQUEST['maxsqfeet']) {
+if ($maxsqFeet) {
 
-	$cond .= " and area<='" . $_REQUEST['maxsqfeet'] . "'";
+	$cond .= " and area<=" . $maxsqFeet;
 	//$heading.=" in ".$q;
 }
-if (isset($_REQUEST['lotSize']) && $_REQUEST['lotSize']) {
+if ($lotSize) {
 
-	$cond .= " and lotSize>='" . $_REQUEST['lotSize'] . "'";
+	$cond .= " and lotSize>=" . $lotSize;
 	//$heading.=" in ".$q;
 }
-if (isset($_REQUEST['minbuildYear']) && $_REQUEST['minbuildYear']) {
+if ($minbuildYear) {
 	$cond .= " and buildYear>=" . $_REQUEST['minbuildYear'];
 	//$heading.=" in ".$q;
 }
-if (isset($_REQUEST['maxbuildYear']) && $_REQUEST['maxbuildYear']) {
+if ($maxbuildYear) {
 	$cond .= " and buildYear<=" . $_REQUEST['maxbuildYear'];
 	//$heading.=" in ".$q;
 }
 
-$mProperty = new Property();
-$re_sql_property = $mProperty->getWhere($cond);
-$noofcolumn = count($re_sql_property);
-$heading = $noofcolumn . " Property Found ";
+if($cond){
+	$cond = "where status='Y' " . $cond;
+	// var_dump($cond);
+	$cond .= " and languageID='".$_SESSION['languageID']."'";
+	$mProperty = new Property();
+	$total_result = $mProperty->getAll($cond);
+	$total = count($total_result);
+	$heading = $total . " Property Found ";
+
+	$page = (int) (!isset($_GET["page"]) ? 1 : $_GET["page"]);
+	$page = ($page == 0 ? 1 : $page);
+	$perpage = 5;
+	$startpoint = ($page * $perpage) - $perpage;
+	$re_sql_property = $mProperty->getLimit($perpage,$startpoint,$cond);
+}
+
+
 // echo $sql_property;
 ?>
 <?php
@@ -109,14 +127,20 @@ $dirrent = round($dirrent, -3);
 
 		<div id="listing">
 			<?php
-			$mPropertyType = new Propertytype();
-			foreach($re_sql_property as $data_property){
-				$data_propertytype = $mPropertyType->find($data_property['propertyTypeID']);
-				$url = $basepath . "property/" . makeUrl($data_property['title']) . "-" . $data_property['propertyID'] . ".html";
-				include("view/property_box.php");
-			} ?>
+				if(@$re_sql_property){
+					$mPropertyType = new Propertytype();
+					foreach($re_sql_property as $data_property){
+						$data_propertytype = $mPropertyType->find($data_property['propertyTypeID']);
+						$url = $basepath . "property/" . makeUrl($data_property['title']) . "-" . $data_property['propertyID'] . ".html";
+						include("view/property_box.php");
+					}
+				}
+			?>
 
 			<div class="spacer"></div>
+			<div style="width:100%;padding-top:30px;"><?= Pages("property", $perpage, $_SERVER['REQUEST_URI'].'&', $cond); ?>
+				<div class="spacer"></div>
+			</div>
 		</div>
 
 

@@ -9,15 +9,15 @@ if (isset($_REQUEST['del']) && $_REQUEST['del'] == "delete") {
 	mysqli_query($conn, $del) or die($err);
 	// @header("location:property.php");
 }
-
-if (isset($_POST['delete_all'])) {
+// var_dump($_POST); die();
+if (isset($_POST['delete_checked'])) {
 	require('models/deleteall_property.php');
 }
 
 $cond = " where languageID='" . $_SESSION['languageID'] . "'  ";
 $r = mysqli_query($conn, "select 1 from property".$cond);
 $total = mysqli_num_rows($r);
-$perpage = 10;
+$perpage = 5;
 $page = (int) (!isset($_GET["page"]) ? 1 : $_GET["page"]);
 $page = ($page == 0 ? 1 : $page);
 $startpoint = ($page * $perpage) - $perpage;

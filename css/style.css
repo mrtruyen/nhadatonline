@@ -289,7 +289,7 @@ h6{
 	font-size:16px;
 	cursor:pointer;
 	float:right;
-	margin-top:5px;
+	/* margin-top:5px; */
 }
 		
 .wlcm-srch input[type="submit"]:hover{
@@ -311,13 +311,13 @@ h6{
 .wlcm-srch .text-part{
 	float:left;
 	
-	width:550px;}
+	width:500px;}
 		
 .wlcm-srch input[type="text"]{
 	background:transparent;
 	border:none;
 	padding:0;
-	height:50px;
+	height:41px;
 	font-size: 20px;
 	line-height: 50px;
 	color: #141414;
@@ -1424,4 +1424,40 @@ text-decoration:none;
     border-radius: 3px;
     width: 105px;
     box-sizing: border-box;
-    }
+	}
+	
+/* pagination */
+/*Scott*/
+div.pagination {
+	padding:3px;
+	margin:3px;
+	text-align:center;
+	float: right;
+}
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #ddd;
+	
+	text-decoration: none; 
+	color: #88AF3F;
+}
+div.pagination a:hover, div.pagination a:active {
+	border:1px solid #85BD1E;
+	color: #638425;
+	background-color: #F1FFD6;
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #B2E05D;
+	font-weight: bold;
+	background-color: #B2E05D;
+	color: #FFF;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}

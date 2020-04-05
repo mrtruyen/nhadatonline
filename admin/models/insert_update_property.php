@@ -18,7 +18,7 @@ if (defined('PROPERTY_ADDNEW')) {
 	$saleStatus = mysqli_real_escape_string($conn, trim($_POST['saleStatus']));
 	$status = mysqli_real_escape_string($conn, trim($_POST['status']));
 	$unit = $_POST['unit'];
-	$picture = $_POST['picturepath'];
+	$picture = @$_POST['picturepath'];
 
 	$date = new DateTime();
 	$createdDate = $date->format('Y-m-d H:i:s');
@@ -28,8 +28,13 @@ if (defined('PROPERTY_ADDNEW')) {
 	$_SESSION['INSERT_ERROR'] = [];
 	foreach ($_SESSION['languages'] as $lang) {
 		if (!isset($_POST['title'][$lang['id']]) || empty(trim($_POST['title'][$lang['id']]))) {
-			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " title cannot be empty!";
+			$_SESSION['INSERT_ERROR'][] = $lang['title'] . " title is required!";
 		}
+	}
+	
+	if($picture == '' && $_FILES['picture']['name'] == ''){
+		// var_dump($picture); die();
+		$_SESSION['INSERT_ERROR'][] = 'Image is required!';
 	}
 
 	if ($_FILES['picture']['name']) {

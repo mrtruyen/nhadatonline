@@ -29,7 +29,7 @@
         </tr>
       <?php } ?>
       <tr>
-        <th width="251"> Title:</th>
+        <th width="251"> Title(*):</th>
         <td width="251" align="left">
           <?php
           foreach ($_SESSION['languages'] as $d_alllanguage) {
@@ -41,7 +41,7 @@
         </td>
       </tr>
       <tr>
-        <th valign="middle">Image:</th>
+        <th valign="middle">Image(*):</th>
         <td align="right"><?php
                           if (@$_SESSION['d_property']['picture'] != '') {
                           ?>
@@ -55,11 +55,9 @@
       </tr>
 
       <tr>
-        <th width="251" valign="top"> Category:</th>
+        <th width="251" valign="top"> Category(*):</th>
         <td width="752" align="left">
           <select class="select_box" style="width:260px" name="categoryID">
-            <option value="0">----Please Select----</option>
-
             <option value="1" <?= (@$_SESSION['d_property']['categoryID'] == 1) ? 'selected="selected"' : '' ?>><?= get_lang('categoryID1', $_SESSION['languageCode']) ?></option>
             <option value="2" <?= (@$_SESSION['d_property']['categoryID'] == 2) ? 'selected="selected"' : '' ?>><?= get_lang('categoryID2', $_SESSION['languageCode']) ?></option>
           </select>
@@ -67,63 +65,68 @@
       </tr>
 
       <tr>
-        <th width="251" valign="top"> Property Type:</th>
+        <th width="251" valign="top"> Property Type(*):</th>
         <td width="752" align="left">
           <select class="select_box" style="width:260px" name="propertyTypeID">
             <?php $cond = "status='y' AND languageID=" . $_SESSION['languageID'] ?>
             <?= get_option_list('property_type', 'propertyTypeID', (@$_SESSION['d_property']['propertyTypeID'] ? $_SESSION['d_property']['propertyTypeID'] : 0), 'title', 'id', $cond) ?>
-
           </select>
         </td>
       </tr>
       <tr>
-        <th width="265" valign="top">Number Of Rooms:</th>
+        <th width="265" valign="top">Number Of Rooms(*):</th>
         <td width="738" align="left">
           <input type="number" name="noOfRoom" value="<?= isset($_SESSION['d_property']['noOfRoom']) ? $_SESSION['d_property']['noOfRoom'] : '' ?>" class="text_box_midium" />
         </td>
       </tr>
 
       <tr>
-        <th width="265" valign="top">Number Of Bedrooms:</th>
+        <th width="265" valign="top">Number Of Bedrooms(*):</th>
         <td width="738" align="left">
           <input type="number" name="noOfBedrooms" value="<?= isset($_SESSION['d_property']['noOfBedrooms']) ? $_SESSION['d_property']['noOfBedrooms'] : '' ?>" class="text_box_midium" />
         </td>
       </tr>
 
       <tr>
-        <th width="265" valign="top">Number Of Bathrooms:</th>
+        <th width="265" valign="top">Number Of Bathrooms(*):</th>
         <td width="738" align="left">
           <input type="number" name="noOfBathrooms" value="<?= isset($_SESSION['d_property']['noOfBathrooms']) ? $_SESSION['d_property']['noOfBathrooms'] : '' ?>" class="text_box_midium" />
         </td>
       </tr>
 
       <tr>
-        <th width="251"> Price:</th>
-        <td width="752" align="left"><input type="text" name="price" value="<?= isset($_SESSION['d_property']['price']) ? convertPrice($_SESSION['d_property']['price']) : '' ?>" class="text_box_midium" />&nbsp;<select class="select_box" style="width:60px" name="unit">
+        <th width="251"> Price(*):</th>
+        <td width="752" align="left"><input type="text" name="price" value="<?= @$_SESSION['d_property']['price'] ? convertPrice($_SESSION['d_property']['price']) : '' ?>" class="text_box_midium" />&nbsp;<select class="select_box" style="width:60px" name="unit">
             <option value="2" <?= (@$_SESSION['d_property']['price'] >= 1 && @$_SESSION['d_property']['categoryID'] == 1) ? 'selected="selected"' : '' ?> <?= (@$_SESSION['d_property']['categoryID'] == 2) ? 'disabled' : '' ?>>Tỷ</option>
             <option value="1" <?= (@$_SESSION['d_property']['price'] < 1 || @$_SESSION['d_property']['categoryID'] == 2) ? 'selected="selected"' : '' ?>>Triệu</option>
         </td>
       </tr>
 
       <tr>
-        <th width="251"> Address:</th>
+        <th width="251"> Address(*):</th>
         <td width="752" align="left"><input type="text" name="location" value="<?= isset($_SESSION['d_property']['location']) ? $_SESSION['d_property']['location'] : '' ?>" class="text_box_midium" /></td>
       </tr>
 
       <tr>
-        <th width="251"> City:</th>
-        <td width="752" align="left"><input type="text" name="city" value="<?= isset($_SESSION['d_property']['city']) ?  $_SESSION['d_property']['city'] : '' ?>" class="text_box_midium" /></td>
+        <th width="251"> City(*):</th>
+        <td width="752" align="left">
+          <select class="select_box" style="width:260px" name="city">
+          <?php foreach($lstCity as $ctCode => $ctName){ ?>
+          <option value="<?= $ctCode ?>" <?= (@$_SESSION['d_property']['city'] == $ctCode) ? 'selected="selected"' : '' ?>><?= $ctName ?></option>
+          <?php } ?>
+          </select>
+        </td>
       </tr>
       <tr>
-        <th width="251">Area:</th>
+        <th width="251">Area(*):</th>
         <td width="752" align="left"><input type="text" name="area" value="<?= isset($_SESSION['d_property']['area']) ? $_SESSION['d_property']['area'] : '' ?>" class="text_box_midium" /></td>
       </tr>
       <tr>
-        <th width="251">Lot Size:</th>
+        <th width="251">Lot Size(*):</th>
         <td width="752" align="left"><input type="text" name="lotSize" value="<?= isset($_SESSION['d_property']['lotSize']) ? $_SESSION['d_property']['lotSize'] : '' ?>" class="text_box_midium" /></td>
       </tr>
       <tr>
-        <th width="265" valign="top">Bulit In Year:</th>
+        <th width="265" valign="top">Bulit In Year(*):</th>
         <td width="738" align="left">
           <?php
           $time = time();

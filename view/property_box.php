@@ -10,6 +10,7 @@
                         <li><span class="ftr-ttl"><?= $data_property['location'] ?></span><?= $data_property['city'] ?></li>
                         <li><?= get_lang('noOfBedrooms', $_SESSION['languageCode']) ?>:&nbsp;<?= $data_property['noOfBedrooms'] ?>, <?= get_lang('noOfBathrooms', $_SESSION['languageCode']) ?>:&nbsp;<?= $data_property['noOfBathrooms'] ?> </li>
                         <li><span class="ftr-ttl"><?= $data_propertytype['title'] ?></span><?= get_lang('area', $_SESSION['languageCode']) ?>:&nbsp;<?= $data_property['area'] ?></label>(m2)</li>
+                        <li><?= get_lang('buildYear', $_SESSION['languageCode']) ?>:&nbsp;<span class="ftr-ttl"><?= $data_property['buildYear'] ?></span></li>
                     </ul>
                     <div class="spacer"></div>
                 </div>

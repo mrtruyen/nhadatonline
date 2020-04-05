@@ -1,4 +1,5 @@
 <?php
+require('constant.php');
 require('functions.php');
 require('utils.php');
 

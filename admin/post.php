@@ -10,7 +10,7 @@ if(isset($_REQUEST['del']) && $_REQUEST['del']=="delete")
   	// @header("location:post.php");
 }
 
-if (isset($_POST['delete_all'])) {
+if (isset($_POST['delete_checked'])) {
 	require('models/deleteall_post.php');
 }
 

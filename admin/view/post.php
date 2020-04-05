@@ -8,7 +8,7 @@
     <?php unset($_SESSION['DB_ERROR']); ?>
   <?php } ?>
   <h3 style="text-align:left;">All Post <a href="post-addnew.php" class="button">Add New</a></h3>
-  <form name="" method="post" action="post.php">
+  <form id="frm-listing" name="" method="post" action="post.php">
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="showlist" id="table-3">
       <thead>
         <tr>
@@ -53,7 +53,8 @@
         ?>
       </tbody>
     </table>
-    <div style="width:100%" class="deleteall_margin"><input type="submit" name="delete_all" class="back_botton" value="Delete" /></div>
+    <input type="hidden" name="delete_checked" value="1"/>
+    <div style="width:100%" class="deleteall_margin"><input type="button" onclick="deleteChecked()" class="back_botton" value="Delete" /></div>
   </form>
   <div style="width:100%;padding-top:30px;"><?php echo Pages("post", $perpage, "post.php?", $cond); ?>
     <div class="spacer"></div>
@@ -78,6 +79,12 @@
     });
 
   });
+
+  function deleteChecked(){
+		if(confirm('Are you sure you want to delete all checked items?')){
+			$('#frm-listing').submit();
+		}
+	}
 </script>
 
 </html>

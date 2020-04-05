@@ -28,7 +28,7 @@
             <?php } ?>
 
             <tr>
-                <th width="251"> Title:</th>
+                <th width="251"> Title(*):</th>
                 <td width="752" align="left">
                 <?php
                     foreach ($_SESSION['languages'] as $d_alllanguage) {
@@ -70,7 +70,7 @@
                 foreach ($_SESSION['languages'] as $d_alllanguage) {
             ?>
             <tr>
-                <th valign="top"> Content(<?= $d_alllanguage['title'] ?>) :</th>
+                <th valign="top"> Content(<?= $d_alllanguage['title'] ?>)(*) :</th>
                 <td width="752" align="left">
                     <textarea id="contentbox_<?= $d_alllanguage['code'] ?>" name="content[<?= $d_alllanguage['id'] ?>]" style="width:100%; height:300px;"><?= isset($_SESSION['d_post']) ? $_SESSION['d_post']['content'][$d_alllanguage['id']] : '' ?></textarea> </td>
             </tr>
